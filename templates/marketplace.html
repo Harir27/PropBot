@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace - Property Listings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+   <div class="row mt-4">
+    {% if properties %}
+        {% for property in properties %}
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ property.photo_url }}" class="card-img-top" alt="Property Image">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{{ property.place_url }}" target="_blank">{{ property.name }}</a>
+                        </h5>
+                        <p class="card-text">
+                            {{ property.formatted_address }} <br>
+                            Rating: {{ property.rating if property.rating else 'No rating' }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="col-12">
+            <p>No properties found for rent in this area. Please try again later.</p>
+        </div>
+    {% endif %}
+</div>
+
+    
+</body>
+</html>
