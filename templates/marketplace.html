@@ -9,6 +9,13 @@
 </head>
 <body>
 
+   <!-- Back to Home Button -->
+   <div class="row mt-4 mb-4">
+       <div class="col-12">
+           <a href="{{ url_for('home') }}" class="btn btn-primary">Back to Home</a>
+       </div>
+   </div>
+
    <div class="row mt-4">
     {% if properties %}
         {% for property in properties %}
@@ -34,6 +41,6 @@
     {% endif %}
 </div>
 
-    
 </body>
 </html>
+
